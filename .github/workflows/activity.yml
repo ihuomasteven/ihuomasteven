@@ -1,0 +1,17 @@
+name: Activity Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Update every day at 12am
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Update Profile README
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
